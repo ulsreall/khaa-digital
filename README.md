@@ -1,39 +1,50 @@
 # Khaa Digital Creative
 
-Landing page untuk brand jasa digital kreatif Khaa Digital Creative.
+Landing page React/Vite untuk brand jasa digital kreatif **Khaa Digital Creative**.
 
 ## Stack
 
-- React 19 + Vite 7
+- React 19
+- Vite 7
+- TypeScript
 - Tailwind CSS v4
 - Framer Motion
-- Radix UI (Accordion, Toast, Tooltip)
-- Wouter (routing)
-- TypeScript
+- Radix UI
+- Wouter
 
-## Setup
+## Local setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000) di browser.
+Buka:
 
-## Build
+```text
+http://localhost:3000
+```
+
+## Build check
 
 ```bash
+npm run typecheck
 npm run build
-npm run preview
 ```
+
+Output production ada di folder `dist/`.
 
 ## Deploy ke Vercel
 
-1. Push ke GitHub
-2. Import repo di [vercel.com](https://vercel.com)
-3. Vercel otomatis detect Vite — klik **Deploy**
+Project ini sudah disiapkan untuk Vercel.
 
-## Kontak
+Setting yang disarankan di Vercel:
 
-- WhatsApp: [wa.me/6281392340102](https://wa.me/6281392340102)
-- Instagram: [@itsmaulacc](https://instagram.com/itsmaulacc)
+- Framework Preset: **Vite**
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Install Command: sudah diatur di `vercel.json`
+- Node.js Version: **20.x** atau **22.x**
+
+Kalau deploy dari GitHub, push semua file di root repo ini. Jangan taruh project di folder dobel seperti `khaa-digital/khaa-digital`.
+
