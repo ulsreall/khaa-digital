@@ -1,30 +1,18 @@
 # Khaa Digital Service
 
-Jasa branding simple, copy promosi, dan landing page untuk UMKM, jasa lokal, dan project kecil.
+Landing page & demo portfolio untuk **Khaa Digital Service** — jasa branding simple, copy promosi, dan landing page untuk UMKM, jasa lokal, dan project kecil.
 
 🌐 **Live:** [khaa.web.id](https://www.khaa.web.id/)
 
-## Tentang
-
-Khaa Digital Service bantu usaha kecil terlihat lebih rapi, jelas, dan gampang dihubungi secara online.
-
-**Yang ditawarkan:**
-- Branding dasar (tagline, tone, warna)
-- Copywriting promosi yang natural
-- Landing page 1 halaman, mobile-friendly
-- Tombol WhatsApp dengan pesan otomatis
-
-**Paket Starter:** Rp299K — Brand Starter Page
-
 ## Demo Pages
 
-Website ini juga punya 3 contoh landing page siap present:
+3 contoh landing page siap present:
 
 | Demo | Kategori | Link |
 |------|----------|------|
-| Kedai Kopi Senja | UMKM makanan/minuman | [Lihat demo](https://www.khaa.web.id/demo/kedai-kopi) |
-| Rapiin Barbershop | Jasa lokal | [Lihat demo](https://www.khaa.web.id/demo/barbershop) |
-| Creative Youth Meetup | Event/komunitas | [Lihat demo](https://www.khaa.web.id/demo/event-komunitas) |
+| Kedai Kopi Senja | UMKM makanan/minuman | [khaa.web.id/demo/kedai-kopi](https://www.khaa.web.id/demo/kedai-kopi) |
+| Rapiin Barbershop | Jasa lokal | [khaa.web.id/demo/barbershop](https://www.khaa.web.id/demo/barbershop) |
+| Creative Youth Meetup | Event/komunitas | [khaa.web.id/demo/event-komunitas](https://www.khaa.web.id/demo/event-komunitas) |
 
 ## Stack
 
@@ -40,20 +28,15 @@ Website ini juga punya 3 contoh landing page siap present:
 ## Local Setup
 
 ```bash
-# Aktifkan corepack + pnpm
 corepack enable
 corepack prepare pnpm@9.15.4 --activate
-
-# Install dependencies
 corepack pnpm install
-
-# Jalankan dev server
 corepack pnpm run dev
 ```
 
 Buka `http://localhost:5173`
 
-## Build & Check
+## Build
 
 ```bash
 corepack pnpm run typecheck
@@ -62,7 +45,7 @@ corepack pnpm run build
 
 Output production ada di folder `dist/`.
 
-## Deploy ke Vercel
+## Deploy
 
 Project ini deploy otomatis dari GitHub ke Vercel.
 
@@ -74,28 +57,28 @@ Setting Vercel:
 - Install Command: `corepack enable && corepack prepare pnpm@9.15.4 --activate && corepack pnpm install --frozen-lockfile`
 - Node.js Version: **20.x** atau **22.x**
 
-Push ke branch `main` → Vercel auto re-deploy.
+Push ke branch `main` → auto re-deploy.
 
 ## Struktur
 
 ```
 khaa-digital/
-├── index.html                    # Entry HTML
-├── package.json                  # Dependencies & scripts
-├── pnpm-lock.yaml                # Lock file
-├── vercel.json                   # Vercel config
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+├── vercel.json
 ├── public/
 │   ├── khaa-digital-service-logo.png
-│   └── demo-assets/              # Gambar demo (9 file)
+│   └── demo-assets/              # Gambar demo
 └── src/
     ├── App.tsx                   # Router
     ├── main.tsx                  # Entry point
     ├── index.css                 # Global styles + theme
     ├── pages/
     │   ├── Home.tsx              # Homepage utama
-    │   ├── DemoLanding.tsx       # Halaman demo (kedai-kopi, barbershop, event)
+    │   ├── DemoLanding.tsx       # Halaman demo
     │   └── not-found.tsx
-    ├── components/ui/            # UI components (button, toast, dll)
+    ├── components/ui/            # UI components
     ├── hooks/                    # Custom hooks
-    └── lib/utils.ts              # Utility functions
+    └── lib/utils.ts              # Utilities
 ```
