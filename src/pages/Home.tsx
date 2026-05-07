@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, X, CheckCircle2, LayoutTemplate, PenTool, Image, Globe, Sparkles,
-  Copy, FileText, MonitorSmartphone, MessageCircle, Star, ArrowRight,
+  Copy, MonitorSmartphone, MessageCircle, Star, ArrowRight,
   Instagram, Phone, Zap, Shield, Clock, Smile
 } from "lucide-react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -51,7 +51,7 @@ Nomor/kontak: `;
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
+    <div className="khaa-site min-h-screen bg-background font-sans text-foreground">
 
       {/* ── NAVBAR ── */}
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-white/90 backdrop-blur-md">
@@ -66,10 +66,9 @@ Nomor/kontak: `;
           <nav className="hidden md:flex items-center gap-6">
             {[
               ["Home", "#"],
-              ["Tentang", "#tentang"],
               ["Layanan", "#layanan"],
               ["Harga", "#harga"],
-              ["Contoh", "#contoh"],
+              ["Cara Order", "#cara-order"],
               ["FAQ", "#faq"],
               ["Kontak", "#kontak"],
             ].map(([label, href]) => (
@@ -104,7 +103,7 @@ Nomor/kontak: `;
               className="md:hidden overflow-hidden bg-white border-b border-border"
             >
               <nav className="flex flex-col p-4 gap-4">
-                {[["Tentang", "#tentang"], ["Layanan", "#layanan"], ["Harga", "#harga"], ["Contoh", "#contoh"], ["FAQ", "#faq"]].map(([l, h]) => (
+                {[["Layanan", "#layanan"], ["Harga", "#harga"], ["Cara Order", "#cara-order"], ["FAQ", "#faq"], ["Kontak", "#kontak"]].map(([l, h]) => (
                   <a key={l} href={h} onClick={closeMenu} className="text-sm font-medium">{l}</a>
                 ))}
                 <div className="flex flex-col gap-2 pt-2 border-t border-border">
@@ -124,19 +123,19 @@ Nomor/kontak: `;
       </header>
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-20 pb-32 lg:pt-32 lg:pb-44">
+      <section className="khaa-hero relative overflow-hidden pt-20 pb-32 lg:pt-32 lg:pb-44">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex flex-col gap-6">
               <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary w-fit">
                 <Sparkles className="mr-2 h-4 w-4" />
-                Jasa Digital Kreatif untuk Usaha & Komunitas
+                Landing Page Simple untuk UMKM & Jasa Lokal
               </div>
 
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-                Usaha Kamu Lebih Mudah Dilirik <span className="text-primary relative inline-block">
-                  Pelanggan
+                Bikin Bisnismu Punya 1 Link Promosi yang <span className="text-primary relative inline-block">
+                  Rapi
                   <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#F4C96B]" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                   </svg>
@@ -144,24 +143,24 @@ Nomor/kontak: `;
               </h1>
 
               <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Khaa Digital Creative bantu kamu bikin promosi yang <strong className="text-foreground">jelas, rapi, dan langsung bisa dipakai</strong> — mulai dari caption, branding, sampai landing page.
+                Khaa Digital Creative bantu UMKM dan jasa lokal punya landing page yang <strong className="text-foreground">mudah dipahami, enak dibuka dari HP, dan langsung terhubung ke WhatsApp</strong>.
               </p>
 
-              <div className="flex flex-wrap gap-4 pt-2">
-                <Button size="lg" className="rounded-full px-8 h-12 text-base" asChild>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <Button size="lg" className="rounded-full px-8 h-12 text-base w-full sm:w-auto" asChild>
                   <a href={waLink("Halo Khaa Digital, saya ingin konsultasi dan pesan layanan.")} target="_blank" rel="noopener noreferrer">
                     Ceritakan Kebutuhanmu <ArrowRight className="w-4 h-4 ml-2" />
                   </a>
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 text-base" asChild>
+                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 text-base w-full sm:w-auto" asChild>
                   <a href="#harga">Lihat Paket Harga</a>
                 </Button>
               </div>
 
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground font-medium pt-2">
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Mulai dari Rp25.000</span>
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Proses simpel, tidak ribet</span>
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Cocok untuk pemula</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Promo mulai Rp299 ribu</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Mobile-friendly</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Tombol order WhatsApp</span>
               </div>
             </motion.div>
 
@@ -206,18 +205,18 @@ Nomor/kontak: `;
 
                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[88%] bg-white rounded-2xl shadow-xl border border-border p-3 flex justify-between items-center z-10">
                   <div className="text-center flex-1">
-                    <div className="text-lg font-bold text-primary">50+</div>
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Template</div>
+                    <div className="text-lg font-bold text-primary">1</div>
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Link Promo</div>
                   </div>
                   <div className="w-px h-8 bg-border" />
                   <div className="text-center flex-1">
-                    <div className="text-lg font-bold">1-2</div>
+                    <div className="text-lg font-bold">3-5</div>
                     <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Hari Kerja</div>
                   </div>
                   <div className="w-px h-8 bg-border" />
                   <div className="text-center flex-1">
-                    <div className="text-lg font-bold">25K</div>
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Mulai Dari</div>
+                    <div className="text-lg font-bold">299K</div>
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Promo Awal</div>
                   </div>
                 </div>
               </div>
@@ -265,7 +264,7 @@ Nomor/kontak: `;
                   <div className="bg-white p-2 rounded-lg shadow-sm shrink-0"><CheckCircle2 className="w-5 h-5 text-primary" /></div>
                   <div>
                     <h4 className="font-semibold text-sm">Harga Bersahabat</h4>
-                    <p className="text-xs text-muted-foreground mt-1">Mulai dari Rp25.000 saja</p>
+                    <p className="text-xs text-muted-foreground mt-1">Paket jelas mulai Rp299 ribu</p>
                   </div>
                 </div>
                 <div className="flex-1 bg-muted/50 rounded-2xl p-4 border border-border flex items-start gap-3">
@@ -320,7 +319,7 @@ Nomor/kontak: `;
             <h2 className="text-3xl font-bold mb-3">Pernah Ngerasain Ini?</h2>
             <p className="text-muted-foreground text-sm">Banyak usaha kecil tertahan di masalah yang sama. Kita hadir untuk bantu selesaikan itu.</p>
           </div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {[
               { icon: MessageCircle, title: "Bingung Nulis Promosi", desc: "Punya produk bagus tapi nggak tahu cara nulis yang bikin orang mau beli." },
               { icon: Image, title: "Tampilan Belum Meyakinkan", desc: "Feed, banner, atau poster masih kelihatan seadanya dan kurang profesional." },
@@ -356,16 +355,11 @@ Nomor/kontak: `;
             <p className="text-muted-foreground text-sm">Pilih sesuai kebutuhan — bisa mulai dari satu layanan kecil dulu, nggak harus langsung paket besar.</p>
           </div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {[
-              { icon: Star, title: "Branding Simple", desc: "Bantu susun nama, tagline, deskripsi singkat, dan arah visual biar usahamu punya karakter." },
-              { icon: PenTool, title: "Copywriting Promosi", desc: "Caption jualan, deskripsi produk, CTA, bio sosmed — ditulis supaya enak dibaca dan bikin orang tertarik." },
-              { icon: Image, title: "Konsep Desain & Banner", desc: "Konsep poster, flyer digital, banner event, atau header komunitas yang rapi sesuai brand." },
-              { icon: MessageCircle, title: "Community & Event Kit", desc: "Announcement, rules grup, welcome message, dan template pendaftaran untuk grup WA, Telegram, atau Discord." },
-              { icon: Globe, title: "Landing Page Basic", desc: "Halaman satu halaman untuk promosi usaha, event, komunitas, atau project digital kamu." },
-              { icon: Sparkles, title: "AI Prompt Design", desc: "Bantu buat instruksi AI (prompt) yang tepat untuk generate logo, banner, maskot, atau stiker brand." },
-              { icon: FileText, title: "Rapihin Teks & Dokumen", desc: "Punya draft kasar? Kita bantu edit supaya bahasanya lebih rapi, profesional, dan enak dibaca." },
-              { icon: MonitorSmartphone, title: "Setup Online Basic", desc: "Bantu setup landing page, link CTA di bio, atau deploy ke Vercel — simpel dan langsung jalan." },
+              { icon: Globe, title: "Landing Page UMKM", desc: "Satu halaman promosi berisi layanan/produk, harga, lokasi, FAQ, dan tombol WhatsApp." },
+              { icon: PenTool, title: "Copywriting Halaman", desc: "Teks dibuat jelas dan natural: headline, deskripsi layanan, CTA, dan FAQ sederhana." },
+              { icon: MonitorSmartphone, title: "Deploy & Mobile Ready", desc: "Website dibuat responsive, enak dibuka dari HP, dan siap dipakai sebagai link bio." },
             ].map((item, i) => (
               <motion.div key={i} variants={fadeUp} whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 className="bg-white p-6 rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all group cursor-default">
@@ -479,8 +473,8 @@ Nomor/kontak: `;
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             {[
-              { icon: Zap, title: "Mulai Rp25K", desc: "Terjangkau" },
-              { icon: Clock, title: "1–2 Hari", desc: "Proses cepat" },
+              { icon: Zap, title: "Mulai 299K", desc: "Promo awal" },
+              { icon: Clock, title: "3–5 Hari", desc: "Landing page" },
               { icon: Shield, title: "Bisa Custom", desc: "Fleksibel" },
               { icon: Smile, title: "Revisi Ringan", desc: "Sampai puas" },
             ].map((stat, i) => (
@@ -523,43 +517,27 @@ Nomor/kontak: `;
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <div className="text-primary font-semibold text-sm tracking-wider uppercase mb-3">Harga</div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Paket Harga Awal</h2>
-            <p className="text-muted-foreground text-sm">Pilih sesuai kebutuhan. Harga bisa disesuaikan — tinggal chat untuk diskusi lebih lanjut.</p>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Paket Harga Landing Page</h2>
+            <p className="text-muted-foreground text-sm">Tiga paket simpel, jelas, dan mudah dipilih. Fokus utama: landing page yang rapi, mobile-friendly, dan langsung connect ke WhatsApp.</p>
           </div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
               {
-                name: "Starter", price: "25", for: "Task kecil dan cepat",
-                features: ["1 bio / caption / tagline", "1 announcement pendek", "Rapihin 1 teks promosi", "1x revisi ringan"],
-                msg: "Halo, saya tertarik dengan Paket Starter Rp25K.",
+                name: "Promo Client Pertama", price: "299", suffix: "ribu", for: "Mulai cepat dengan budget ringan",
+                features: ["1 landing page simpel", "Tampilan responsive", "Tombol WhatsApp", "Info produk/layanan", "Lokasi & jam buka", "FAQ singkat", "Revisi ringan 1x"],
+                msg: "Halo Khaa Digital, saya tertarik dengan Paket Promo Client Pertama Rp299 ribu.",
               },
               {
-                name: "Promo Basic", price: "50", for: "Promosi produk atau jasa",
-                features: ["Caption promosi", "Deskripsi produk/jasa", "Call-to-Action (CTA)", "Konsep visual sederhana", "1x revisi ringan"],
-                msg: "Halo, saya tertarik dengan Paket Promo Basic Rp50K.",
-              },
-              {
-                name: "Community / Event Kit", price: "75", for: "Event atau komunitas",
-                features: ["Announcement", "Rules komunitas/event", "Teks pendaftaran", "Welcome message", "1x revisi ringan"],
-                msg: "Halo, saya tertarik dengan Paket Community/Event Kit Rp75K.",
-              },
-              {
-                name: "Branding Mini", price: "100", for: "Usaha yang butuh identitas",
-                features: ["Tagline brand", "Deskripsi brand", "Bio sosial media", "Arah visual dasar", "Prompt logo/banner AI", "1x revisi ringan"],
+                name: "Basic", price: "499", suffix: "ribu", for: "UMKM yang butuh halaman promosi rapi",
+                features: ["Semua fitur paket promo", "Section harga/paket", "Section testimoni", "Copywriting dasar", "Deploy online", "Revisi 1x"],
                 highlight: true,
-                msg: "Halo, saya tertarik dengan Paket Branding Mini Rp100K.",
+                msg: "Halo Khaa Digital, saya tertarik dengan Paket Basic Rp499 ribu.",
               },
               {
-                name: "Landing Page Basic", price: "150", for: "Halaman promosi sederhana",
-                features: ["1 halaman landing page", "HTML/CSS + responsive", "Teks promosi lengkap", "Tombol CTA", "1x revisi ringan"],
-                msg: "Halo, saya tertarik dengan Paket Landing Page Basic Rp150K.",
-              },
-              {
-                name: "Launch Simple", price: "250", for: "Siap mulai promosi penuh",
-                features: ["Branding Mini", "Copywriting promosi", "Konsep banner", "Landing Page Basic", "Template DM promosi"],
-                highlight: true,
-                msg: "Halo, saya tertarik dengan Paket Launch Simple Rp250K.",
+                name: "Standard", price: "799", suffix: "ribu", for: "Tampil lebih profesional dan siap jualan",
+                features: ["Semua fitur Basic", "Copywriting lebih lengkap", "SEO title & description", "CTA WhatsApp lebih rapi", "Desain lebih polished", "Revisi 2x"],
+                msg: "Halo Khaa Digital, saya tertarik dengan Paket Standard Rp799 ribu.",
               },
             ].map((pkg, i) => (
               <motion.div key={i} variants={fadeUp} whileHover={{ y: -6 }}
@@ -574,7 +552,8 @@ Nomor/kontak: `;
                   <p className="text-xs text-muted-foreground mb-3">Cocok untuk: {pkg.for}</p>
                   <div className="flex items-baseline gap-1 text-primary">
                     <span className="font-semibold">Rp</span>
-                    <span className="text-4xl font-black">{pkg.price}K</span>
+                    <span className="text-4xl font-black">{pkg.price}</span>
+                    <span className="font-semibold text-sm text-primary/80">{pkg.suffix}</span>
                   </div>
                 </div>
                 <ul className="space-y-2.5 mb-7 flex-1">
@@ -592,16 +571,16 @@ Nomor/kontak: `;
                 </Button>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
 
           <p className="text-center text-xs text-muted-foreground mt-8">
-            Butuh sesuatu yang berbeda? <a href={waLink("Halo, saya ingin konsultasi kebutuhan custom di luar paket.")} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">Chat langsung untuk harga custom.</a>
+            Belum yakin pilih yang mana? <a href={waLink("Halo Khaa Digital, saya mau konsultasi paket landing page yang cocok.")} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">Chat dulu, konsultasi gratis.</a>
           </p>
         </div>
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="py-24 bg-white">
+      <section id="cara-order" className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-xl mx-auto mb-14">
             <h2 className="text-3xl font-bold mb-3">Cara Order — Gampang Banget</h2>
@@ -613,7 +592,7 @@ Nomor/kontak: `;
             {[
               { num: "01", title: "Ceritakan Kebutuhan", desc: "Salin formulir di bawah, isi sesuai kebutuhanmu, kirim via WhatsApp atau DM Instagram." },
               { num: "02", title: "Diskusi Singkat", desc: "Kita ngobrol sebentar untuk mastiin hasilnya sesuai ekspektasi kamu." },
-              { num: "03", title: "Pengerjaan Draft", desc: "Ditunggu 1–2 hari kerja. Kamu bisa fokus urusan lain dulu." },
+              { num: "03", title: "Pengerjaan Draft", desc: "Ditunggu 3–5 hari kerja untuk landing page. Kamu bisa fokus urusan lain dulu." },
               { num: "04", title: "Revisi & Selesai", desc: "Cek hasilnya, minta revisi kalau perlu, lalu materi siap langsung dipakai." },
             ].map((step, i) => (
               <div key={i} className="flex flex-col items-center text-center">
@@ -739,7 +718,7 @@ Kontak: `}</code></pre>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-5 leading-tight">Yuk, Mulai dari Satu Langkah Kecil</h2>
           <p className="text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed">
-            Nggak harus langsung paket besar. Mulai dari task kecil dulu — caption, bio, atau sekadar konsultasi gratis. Kita bantu dari sana.
+            Nggak perlu bingung teknis. Ceritakan usaha kamu, nanti kita bantu susun halaman promosi yang rapi dan siap dibagikan ke calon pelanggan.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
@@ -753,7 +732,7 @@ Kontak: `}</code></pre>
             </Button>
           </div>
 
-          <p className="text-xs text-white/40 mb-6">Mulai dari Rp25.000 • Bisa custom sesuai kebutuhan • Konsultasi gratis</p>
+          <p className="text-xs text-white/40 mb-6">Landing page mulai Rp299 ribu • Mobile-friendly • Konsultasi gratis</p>
 
           <p className="text-xs font-medium text-white/50 uppercase tracking-widest mb-4">Atau hubungi via</p>
           <div className="flex justify-center gap-4">

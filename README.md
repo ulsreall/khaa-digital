@@ -47,4 +47,3 @@ Setting yang disarankan di Vercel:
 - Node.js Version: **20.x** atau **22.x**
 
 Kalau deploy dari GitHub, push semua file di root repo ini. Jangan taruh project di folder dobel seperti `khaa-digital/khaa-digital`.
-
