@@ -17,6 +17,7 @@ import {
   Shield,
   Store,
   BadgeCheck,
+  ExternalLink,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -66,6 +67,7 @@ Kontak:`;
 
   const navItems = [
     ["Layanan", "#layanan"],
+    ["Demo", "#demo"],
     ["Cocok Untuk", "#cocok"],
     ["Paket", "#paket"],
     ["Alur", "#alur"],
@@ -101,6 +103,30 @@ Kontak:`;
     { icon: Store, title: "UMKM & toko kecil", desc: "Makanan, laundry, barbershop, coffee shop, toko online, dan usaha rumahan." },
     { icon: Shield, title: "Jasa lokal", desc: "Fotografer, bengkel, desain, tutor, servis, konsultasi, atau jasa personal." },
     { icon: BadgeCheck, title: "Project baru", desc: "Komunitas, event kecil, personal brand, atau project digital yang baru mulai." },
+  ];
+
+  const demoProjects = [
+    {
+      title: "Kedai Kopi Senja",
+      category: "UMKM makanan/minuman",
+      desc: "Demo landing page untuk kedai kopi, makanan rumahan, atau usaha kuliner kecil dengan menu, lokasi, promo, dan tombol order WhatsApp.",
+      href: "/demo/kedai-kopi",
+      gradient: "from-amber-100 via-white to-orange-50",
+    },
+    {
+      title: "Rapiin Barbershop",
+      category: "Jasa lokal",
+      desc: "Demo untuk barbershop, laundry, bengkel, servis, tutor, atau jasa lokal yang butuh harga jelas dan booking cepat.",
+      href: "/demo/barbershop",
+      gradient: "from-teal-100 via-white to-slate-50",
+    },
+    {
+      title: "Creative Youth Meetup",
+      category: "Event/komunitas",
+      desc: "Demo untuk event sekolah/kampus, komunitas, webinar kecil, workshop, atau project baru yang perlu info acara rapi.",
+      href: "/demo/event-komunitas",
+      gradient: "from-blue-100 via-white to-cyan-50",
+    },
   ];
 
   const workflow = [
@@ -256,6 +282,37 @@ Kontak:`;
                 </motion.div>
               ))}
             </motion.div>
+          </div>
+        </section>
+
+        <section id="demo" className="py-20 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Contoh demo</p>
+              <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">Biar calon client bisa bayangin hasilnya</h2>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Ini contoh landing page dummy yang bisa dipakai buat nunjukin gaya kerja Khaa Digital ke UMKM, jasa lokal, atau project kecil.
+              </p>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {demoProjects.map((item) => (
+                <a key={item.title} href={item.href} className={`group overflow-hidden rounded-[2rem] border border-sky-100 bg-gradient-to-br ${item.gradient} p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl`}>
+                  <div className="mb-5 rounded-[1.5rem] border border-white/80 bg-white/75 p-5">
+                    <div className="mb-12 flex items-center justify-between text-xs font-bold uppercase tracking-[0.18em] text-sky-600">
+                      <span>Preview</span>
+                      <ExternalLink className="h-4 w-4" />
+                    </div>
+                    <h3 className="text-2xl font-black text-[#021B45]">{item.title}</h3>
+                    <p className="mt-2 text-sm font-semibold text-primary">{item.category}</p>
+                  </div>
+                  <p className="text-sm leading-relaxed text-slate-600">{item.desc}</p>
+                  <div className="mt-5 inline-flex items-center text-sm font-bold text-[#062B63]">
+                    Lihat demo <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
