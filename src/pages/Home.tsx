@@ -225,8 +225,8 @@ Kontak:`;
                       <div className="text-white/70">hari draft</div>
                     </div>
                     <div className="rounded-2xl bg-sky-50 p-4 text-[#062B63]">
-                      <div className="text-2xl font-black">1 link</div>
-                      <div className="text-slate-500">siap promosi</div>
+                      <div className="text-2xl font-black">Online</div>
+                      <div className="text-slate-500">mudah dihubungi</div>
                     </div>
                   </div>
                 </div>
