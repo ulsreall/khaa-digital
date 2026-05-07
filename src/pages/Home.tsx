@@ -114,11 +114,16 @@ Kontak:`;
     <div className="khaa-site min-h-screen bg-background font-sans text-foreground">
       <header className="sticky top-0 z-50 border-b border-border/50 bg-white/90 backdrop-blur-xl">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <a href="#" className="flex items-center gap-2" aria-label="Khaa Digital Creative">
-            <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
-              <Sparkles className="h-4 w-4" />
+          <a href="#" className="flex items-center gap-3" aria-label="Khaa Digital Service">
+            <img
+              src="/khaa-digital-service-logo.png"
+              alt="Khaa Digital Service"
+              className="h-11 w-11 rounded-2xl bg-white object-contain p-1 shadow-sm ring-1 ring-sky-100 sm:h-12 sm:w-12"
+            />
+            <span className="leading-tight">
+              <span className="block font-black tracking-tight text-[#062B63]">Khaa Digital</span>
+              <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-sky-500">Service</span>
             </span>
-            <span className="font-bold tracking-tight">Khaa Digital</span>
           </a>
 
           <nav className="hidden items-center gap-6 md:flex">
@@ -167,45 +172,64 @@ Kontak:`;
 
       <main>
         <section className="khaa-hero relative overflow-hidden py-16 sm:py-20 lg:py-28">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(109,80,219,0.18),transparent_34%),radial-gradient(circle_at_left,rgba(244,201,107,0.18),transparent_32%)]" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(16,174,239,0.22),transparent_34%),radial-gradient(circle_at_left,rgba(6,43,99,0.12),transparent_32%)]" />
           <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-4xl text-center">
-              <motion.div initial="hidden" animate="visible" variants={stagger} className="space-y-7">
-                <motion.div variants={fadeUp} className="mx-auto inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
-                  <Sparkles className="mr-2 h-4 w-4" /> Jasa branding & landing page untuk usaha kecil
+            <div className="grid items-center gap-10 lg:grid-cols-[1.06fr_0.94fr]">
+              <motion.div initial="hidden" animate="visible" variants={stagger} className="space-y-7 text-center lg:text-left">
+                <motion.div variants={fadeUp} className="inline-flex items-center rounded-full border border-sky-200 bg-white/80 px-4 py-2 text-sm font-semibold text-[#062B63] shadow-sm">
+                  <Sparkles className="mr-2 h-4 w-4 text-sky-500" /> Khaa Digital Service • branding & landing page
                 </motion.div>
 
-                <motion.h1 variants={fadeUp} className="text-4xl font-black tracking-tight sm:text-5xl lg:text-7xl">
-                  Bikin usaha kamu terlihat <span className="text-primary">lebih rapi, jelas, dan gampang dihubungi.</span>
+                <motion.h1 variants={fadeUp} className="text-4xl font-black tracking-tight text-[#021B45] sm:text-5xl lg:text-7xl">
+                  Bikin usaha kamu terlihat <span className="khaa-gradient-text">lebih rapi, jelas, dan gampang dihubungi.</span>
                 </motion.h1>
 
-                <motion.p variants={fadeUp} className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <motion.p variants={fadeUp} className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
                   Khaa Digital bantu UMKM, jasa lokal, dan project kecil punya tampilan online yang lebih meyakinkan — mulai dari arah brand, copy promosi, sampai landing page 1 halaman yang connect ke WhatsApp.
                 </motion.p>
 
-                <motion.div variants={fadeUp} className="flex flex-col justify-center gap-3 sm:flex-row">
-                  <Button size="lg" className="h-12 rounded-full px-7 text-base" asChild>
+                <motion.div variants={fadeUp} className="flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+                  <Button size="lg" className="h-12 rounded-full bg-[#10AEEF] px-7 text-base shadow-lg shadow-sky-500/20 hover:bg-[#008FE3]" asChild>
                     <a href={waLink("Halo Khaa Digital, saya mau konsultasi jasa branding/landing page.")} target="_blank" rel="noopener noreferrer">
                       Konsultasi via WhatsApp <ArrowRight className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
-                  <Button size="lg" variant="outline" className="h-12 rounded-full px-7 text-base" asChild>
+                  <Button size="lg" variant="outline" className="h-12 rounded-full border-sky-200 bg-white/80 px-7 text-base text-[#062B63] hover:bg-sky-50" asChild>
                     <a href="#paket">Lihat Paket Starter</a>
                   </Button>
                 </motion.div>
 
-                <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-2 pt-2 text-sm text-muted-foreground">
+                <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-2 pt-2 text-sm text-muted-foreground lg:justify-start">
                   {[
                     "Branding dasar",
                     "Copy promosi",
                     "Landing page HP-friendly",
                     "Tombol WhatsApp",
                   ].map((item) => (
-                    <span key={item} className="inline-flex items-center gap-1 rounded-full border border-border bg-white/80 px-3 py-1.5 shadow-sm">
-                      <CheckCircle2 className="h-4 w-4 text-primary" /> {item}
+                    <span key={item} className="inline-flex items-center gap-1 rounded-full border border-sky-100 bg-white/85 px-3 py-1.5 shadow-sm">
+                      <CheckCircle2 className="h-4 w-4 text-sky-500" /> {item}
                     </span>
                   ))}
                 </motion.div>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 1, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="relative mx-auto w-full max-w-md">
+                <div className="absolute -inset-5 rounded-[2.5rem] bg-gradient-to-br from-sky-300/35 via-white to-blue-900/10 blur-2xl" />
+                <div className="relative overflow-hidden rounded-[2rem] border border-sky-100 bg-white/90 p-6 shadow-2xl backdrop-blur-xl">
+                  <div className="rounded-[1.5rem] bg-gradient-to-br from-[#DFF6FF] via-white to-[#F7FCFF] p-6">
+                    <img src="/khaa-digital-service-logo.png" alt="Logo Khaa Digital Service" className="khaa-logo-img mx-auto w-full max-w-[260px] rounded-3xl bg-white object-contain p-4" />
+                  </div>
+                  <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
+                    <div className="rounded-2xl bg-[#021B45] p-4 text-white">
+                      <div className="text-2xl font-black">3–5</div>
+                      <div className="text-white/70">hari draft</div>
+                    </div>
+                    <div className="rounded-2xl bg-sky-50 p-4 text-[#062B63]">
+                      <div className="text-2xl font-black">1 link</div>
+                      <div className="text-slate-500">siap promosi</div>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -258,10 +282,10 @@ Kontak:`;
           </div>
         </section>
 
-        <section id="cocok" className="bg-[#15112B] py-20 text-white lg:py-24">
+        <section id="cocok" className="khaa-blue-section py-20 text-white lg:py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto mb-12 max-w-2xl text-center">
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-[#F4C96B]">Cocok untuk</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-sky-300">Cocok untuk</p>
               <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">Buat yang butuh mulai rapi dulu, bukan langsung sistem besar.</h2>
               <p className="text-sm leading-relaxed text-white/70">
                 Kalau kamu baru mulai promosi online dan butuh tampilan yang lebih niat, paket starter ini cukup untuk langkah pertama.
@@ -271,7 +295,7 @@ Kontak:`;
             <div className="grid gap-5 md:grid-cols-3">
               {suitable.map((item) => (
                 <div key={item.title} className="rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-sm">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#F4C96B]">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-sky-300">
                     <item.icon className="h-5 w-5" />
                   </div>
                   <h3 className="mb-2 font-bold">{item.title}</h3>
@@ -317,7 +341,7 @@ Kontak:`;
                     "Revisi ringan 1x setelah draft pertama",
                   ].map((feature) => (
                     <div key={feature} className="flex gap-2 rounded-2xl bg-white p-4 text-sm shadow-sm">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-sky-500" />
                       <span className="text-muted-foreground">{feature}</span>
                     </div>
                   ))}
@@ -374,7 +398,7 @@ Kontak:`;
           </div>
         </section>
 
-        <section id="kontak" className="bg-[#F8F6FF] py-20 lg:py-24">
+        <section id="kontak" className="bg-[#DFF6FF] py-20 lg:py-24">
           <div className="container mx-auto max-w-3xl px-4">
             <div className="rounded-[2rem] border border-primary/10 bg-white p-7 shadow-xl shadow-primary/5 sm:p-10">
               <div className="mb-7 text-center">
@@ -384,7 +408,7 @@ Kontak:`;
                 </p>
               </div>
 
-              <div className="mb-6 overflow-x-auto rounded-2xl bg-[#15112B] p-5 text-sm leading-loose text-green-400 shadow-inner">
+              <div className="mb-6 overflow-x-auto rounded-2xl bg-[#021B45] p-5 text-sm leading-loose text-sky-300 shadow-inner">
                 <pre><code>{briefText}</code></pre>
               </div>
 
