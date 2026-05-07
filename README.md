@@ -99,7 +99,3 @@ khaa-digital/
     ├── hooks/                    # Custom hooks
     └── lib/utils.ts              # Utility functions
 ```
-
-## Contact
-
-- 🌐 Website: [khaa.web.id](https://www.khaa.web.id/)
