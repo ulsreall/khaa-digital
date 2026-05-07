@@ -102,5 +102,4 @@ khaa-digital/
 
 ## Contact
 
-- 💬 WhatsApp: [wa.me/6281392340102](https://wa.me/6281392340102)
 - 🌐 Website: [khaa.web.id](https://www.khaa.web.id/)
