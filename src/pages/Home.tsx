@@ -1,11 +1,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Menu, X, CheckCircle2, LayoutTemplate, PenTool, Image, Globe, Sparkles,
-  Copy, MonitorSmartphone, MessageCircle, Star, ArrowRight,
-  Instagram, Phone, Zap, Shield, Clock, Smile
+  Menu,
+  X,
+  CheckCircle2,
+  Copy,
+  Phone,
+  Instagram,
+  ArrowRight,
+  Sparkles,
+  MonitorSmartphone,
+  MessageCircle,
+  Palette,
+  Globe,
+  Clock,
+  Shield,
 } from "lucide-react";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 
@@ -13,83 +23,126 @@ const WA_NUMBER = "6281392340102";
 const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 const IG_LINK = "https://instagram.com/itsmaulacc";
 
-function waLink(msg: string) {
-  return `${WA_BASE}?text=${encodeURIComponent(msg)}`;
+function waLink(message: string) {
+  return `${WA_BASE}?text=${encodeURIComponent(message)}`;
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
 const stagger = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  hidden: { opacity: 1 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
 function Home() {
   const { toast } = useToast();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const briefText = `Halo Khaa Digital, saya ingin konsultasi:
+  const briefText = `Halo Khaa Digital, saya mau mulai branding dari awal.
 
-Nama usaha/kegiatan: 
-Jenis usaha: 
-Target pelanggan: 
-Butuh dibantu bagian apa: 
-Gaya tampilan yang diinginkan: 
-Referensi jika ada: 
-Deadline: 
-Nomor/kontak: `;
+Nama usaha/project:
+Jenis usaha:
+Target pelanggan:
+Produk/jasa utama:
+Masalah yang ingin dibantu:
+Gaya brand yang disukai:
+Referensi jika ada:
+Deadline:
+Kontak:`;
 
   const copyBrief = () => {
     navigator.clipboard.writeText(briefText).then(() => {
-      toast({ title: "Formulir Berhasil Disalin", description: "Tinggal paste ke WhatsApp atau DM Instagram." });
+      toast({ title: "Brief berhasil disalin", description: "Tinggal paste ke WhatsApp lalu isi pelan-pelan." });
     });
   };
 
   const closeMenu = () => setMobileMenuOpen(false);
 
+  const navItems = [
+    ["Arah Brand", "#arah"],
+    ["Langkah Awal", "#mulai"],
+    ["Paket", "#paket"],
+    ["Alur", "#alur"],
+    ["Kontak", "#kontak"],
+  ];
+
+  const essentials = [
+    {
+      icon: Palette,
+      title: "Identitas brand sederhana",
+      desc: "Nama, tagline, warna, gaya bahasa, dan arah visual biar brand punya karakter yang jelas.",
+    },
+    {
+      icon: MessageCircle,
+      title: "Copy yang gampang dipahami",
+      desc: "Kalimat promosi, deskripsi layanan, CTA, dan pesan WhatsApp dibuat natural buat target lokal.",
+    },
+    {
+      icon: Globe,
+      title: "1 halaman promosi utama",
+      desc: "Landing page simple untuk jelasin siapa kamu, bantu apa, harga awal, dan cara calon pelanggan menghubungi.",
+    },
+  ];
+
+  const removeItems = [
+    "Terlalu banyak layanan yang belum siap dikerjakan",
+    "Testimoni palsu atau contoh feedback yang bikin kurang trust",
+    "Section ramai seperti partner ticker, banyak kartu contoh, dan copy berulang",
+    "Bahasa yang terlalu agensi padahal brand masih tahap awal",
+  ];
+
+  const startSteps = [
+    {
+      step: "01",
+      title: "Tentukan posisi brand",
+      desc: "Khaa Digital diposisikan sebagai partner digital simple untuk UMKM, jasa lokal, dan project kecil yang baru mulai.",
+    },
+    {
+      step: "02",
+      title: "Bikin starter kit",
+      desc: "Susun tagline, bio, warna, gaya tulisan, template brief, dan cara jelasin layanan dengan mudah.",
+    },
+    {
+      step: "03",
+      title: "Buat 1 demo nyata",
+      desc: "Mulai dari satu contoh landing page, misalnya laundry, coffee shop, barbershop, atau jasa rumahan.",
+    },
+    {
+      step: "04",
+      title: "Cari client pertama",
+      desc: "Pakai promo awal yang jelas, kumpulkan bukti hasil asli, lalu baru tambah layanan pelan-pelan.",
+    },
+  ];
+
   return (
     <div className="khaa-site min-h-screen bg-background font-sans text-foreground">
+      <header className="sticky top-0 z-50 border-b border-border/50 bg-white/90 backdrop-blur-xl">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+          <a href="#" className="flex items-center gap-2" aria-label="Khaa Digital Creative">
+            <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
+              <Sparkles className="h-4 w-4" />
+            </span>
+            <span className="font-bold tracking-tight">Khaa Digital</span>
+          </a>
 
-      {/* ── NAVBAR ── */}
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-white/90 backdrop-blur-md">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-primary text-primary-foreground rounded-full p-2">
-              <Sparkles className="w-4 h-4" />
-            </div>
-            <span className="font-bold text-lg tracking-tight">Khaa Digital Creative</span>
-          </div>
-
-          <nav className="hidden md:flex items-center gap-6">
-            {[
-              ["Home", "#"],
-              ["Layanan", "#layanan"],
-              ["Harga", "#harga"],
-              ["Cara Order", "#cara-order"],
-              ["FAQ", "#faq"],
-              ["Kontak", "#kontak"],
-            ].map(([label, href]) => (
-              <a key={label} href={href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+          <nav className="hidden items-center gap-6 md:flex">
+            {navItems.map(([label, href]) => (
+              <a key={label} href={href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
                 {label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" size="sm" asChild>
-              <a href="#layanan">Lihat Layanan</a>
-            </Button>
-            <Button size="sm" asChild>
-              <a href={waLink("Halo Khaa Digital, saya ingin konsultasi layanan.")} target="_blank" rel="noopener noreferrer">
-                Mulai Pesan
-              </a>
-            </Button>
-          </div>
+          <Button className="hidden rounded-full md:inline-flex" asChild>
+            <a href={waLink("Halo Khaa Digital, saya mau mulai branding dari awal.")} target="_blank" rel="noopener noreferrer">
+              Mulai Konsultasi
+            </a>
+          </Button>
 
-          <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button className="rounded-xl p-2 md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Buka menu">
             {mobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -100,726 +153,295 @@ Nomor/kontak: `;
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden overflow-hidden bg-white border-b border-border"
+              className="overflow-hidden border-t border-border bg-white md:hidden"
             >
-              <nav className="flex flex-col p-4 gap-4">
-                {[["Layanan", "#layanan"], ["Harga", "#harga"], ["Cara Order", "#cara-order"], ["FAQ", "#faq"], ["Kontak", "#kontak"]].map(([l, h]) => (
-                  <a key={l} href={h} onClick={closeMenu} className="text-sm font-medium">{l}</a>
+              <nav className="flex flex-col gap-4 p-4">
+                {navItems.map(([label, href]) => (
+                  <a key={label} href={href} onClick={closeMenu} className="text-sm font-semibold">
+                    {label}
+                  </a>
                 ))}
-                <div className="flex flex-col gap-2 pt-2 border-t border-border">
-                  <Button variant="outline" className="w-full" onClick={closeMenu} asChild>
-                    <a href="#layanan">Lihat Layanan</a>
-                  </Button>
-                  <Button className="w-full" onClick={closeMenu} asChild>
-                    <a href={waLink("Halo Khaa Digital, saya ingin konsultasi.")} target="_blank" rel="noopener noreferrer">
-                      Mulai Pesan
-                    </a>
-                  </Button>
-                </div>
+                <Button className="w-full rounded-full" onClick={closeMenu} asChild>
+                  <a href={waLink("Halo Khaa Digital, saya mau mulai branding dari awal.")} target="_blank" rel="noopener noreferrer">
+                    Mulai Konsultasi
+                  </a>
+                </Button>
               </nav>
             </motion.div>
           )}
         </AnimatePresence>
       </header>
 
-      {/* ── HERO ── */}
-      <section className="khaa-hero relative overflow-hidden pt-20 pb-32 lg:pt-32 lg:pb-44">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex flex-col gap-6">
-              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary w-fit">
-                <Sparkles className="mr-2 h-4 w-4" />
-                Landing Page Simple untuk UMKM & Jasa Lokal
-              </div>
+      <main>
+        <section className="khaa-hero relative overflow-hidden py-20 sm:py-24 lg:py-32">
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(109,80,219,0.18),transparent_34%),radial-gradient(circle_at_left,rgba(244,201,107,0.18),transparent_32%)]" />
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-4xl text-center">
+              <motion.div initial="hidden" animate="visible" variants={stagger} className="space-y-7">
+                <motion.div variants={fadeUp} className="mx-auto inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
+                  <Sparkles className="mr-2 h-4 w-4" /> Mulai branding dari nol, pelan-pelan tapi rapi
+                </motion.div>
 
-              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-                Bikin Bisnismu Punya 1 Link Promosi yang <span className="text-primary relative inline-block">
-                  Rapi
-                  <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#F4C96B]" viewBox="0 0 100 10" preserveAspectRatio="none">
-                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
-                  </svg>
-                </span>
-              </h1>
+                <motion.h1 variants={fadeUp} className="text-4xl font-black tracking-tight sm:text-5xl lg:text-7xl">
+                  Khaa Digital bantu brand kecil tampil <span className="text-primary">jelas, rapi, dan siap dicari client.</span>
+                </motion.h1>
 
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Khaa Digital Creative bantu UMKM dan jasa lokal punya landing page yang <strong className="text-foreground">mudah dipahami, enak dibuka dari HP, dan langsung terhubung ke WhatsApp</strong>.
-              </p>
+                <motion.p variants={fadeUp} className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  Untuk langkah awal, kita nggak perlu kelihatan seperti agensi besar dulu. Yang penting: posisi brand jelas, layanan mudah dipahami, punya 1 halaman promosi, dan siap dipakai buat cari client pertama.
+                </motion.p>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <Button size="lg" className="rounded-full px-8 h-12 text-base w-full sm:w-auto" asChild>
-                  <a href={waLink("Halo Khaa Digital, saya ingin konsultasi dan pesan layanan.")} target="_blank" rel="noopener noreferrer">
-                    Ceritakan Kebutuhanmu <ArrowRight className="w-4 h-4 ml-2" />
-                  </a>
-                </Button>
-                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 text-base w-full sm:w-auto" asChild>
-                  <a href="#harga">Lihat Paket Harga</a>
-                </Button>
-              </div>
+                <motion.div variants={fadeUp} className="flex flex-col justify-center gap-3 sm:flex-row">
+                  <Button size="lg" className="h-12 rounded-full px-7 text-base" asChild>
+                    <a href={waLink("Halo Khaa Digital, saya mau mulai branding dari awal.")} target="_blank" rel="noopener noreferrer">
+                      Mulai dari Brief <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button size="lg" variant="outline" className="h-12 rounded-full px-7 text-base" asChild>
+                    <a href="#mulai">Lihat Langkah Awal</a>
+                  </Button>
+                </motion.div>
 
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground font-medium pt-2">
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Promo mulai Rp299 ribu</span>
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Mobile-friendly</span>
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-primary" /> Tombol order WhatsApp</span>
-              </div>
-            </motion.div>
+                <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-2 pt-2 text-sm text-muted-foreground">
+                  {[
+                    "Branding basic",
+                    "Copywriting simple",
+                    "Landing page 1 halaman",
+                    "WhatsApp-ready",
+                  ].map((item) => (
+                    <span key={item} className="inline-flex items-center gap-1 rounded-full border border-border bg-white/80 px-3 py-1.5 shadow-sm">
+                      <CheckCircle2 className="h-4 w-4 text-primary" /> {item}
+                    </span>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="relative lg:ml-auto w-full max-w-md mx-auto">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-primary/20 blur-3xl rounded-full mix-blend-multiply" />
-              <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#F4C96B]/20 blur-3xl rounded-full mix-blend-multiply" />
+        <section id="arah" className="bg-white py-20 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="space-y-5">
+                <motion.p variants={fadeUp} className="text-sm font-bold uppercase tracking-widest text-primary">Arah brand</motion.p>
+                <motion.h2 variants={fadeUp} className="text-3xl font-black tracking-tight sm:text-4xl">
+                  Kita fokus dulu ke satu pesan utama.
+                </motion.h2>
+                <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
+                  Khaa Digital bukan perlu terlihat punya semua layanan. Untuk awal, brand ini cukup dikenal sebagai tempat bantu usaha kecil punya tampilan digital yang lebih rapi dan gampang dijual.
+                </motion.p>
+              </motion.div>
 
-              <div className="relative rounded-[2rem] bg-gradient-to-br from-[#15112B] to-primary p-1 shadow-2xl shadow-primary/20 ring-1 ring-white/10">
-                <div className="absolute top-4 left-4 right-4 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center px-4 border border-white/10">
-                  <div className="w-1/2 h-3 rounded-full bg-white/20" />
-                </div>
-                <div className="h-[460px] rounded-[1.75rem] bg-background/95 mt-14 overflow-hidden flex flex-col gap-4 p-6 border border-white/5 relative">
-
-                  <motion.div animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                    className="absolute -right-4 top-6 bg-white shadow-xl rounded-xl p-3 border border-border flex items-center gap-3 w-48">
-                    <div className="bg-primary/10 p-2 rounded-lg"><LayoutTemplate className="w-5 h-5 text-primary" /></div>
-                    <div><div className="text-xs font-bold">Landing Page</div><div className="text-[10px] text-muted-foreground">Siap rilis</div></div>
-                  </motion.div>
-
-                  <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-                    className="absolute -left-6 bottom-28 bg-white shadow-xl rounded-xl p-3 border border-border flex items-center gap-3 w-48">
-                    <div className="bg-[#F4C96B]/20 p-2 rounded-lg"><PenTool className="w-5 h-5 text-[#D49D26]" /></div>
-                    <div><div className="text-xs font-bold">Caption Promo</div><div className="text-[10px] text-muted-foreground">Lebih natural</div></div>
-                  </motion.div>
-
-                  <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 2 }}
-                    className="absolute right-2 bottom-12 bg-white shadow-xl rounded-xl p-3 border border-border flex items-center gap-3 w-44">
-                    <div className="bg-green-100 p-2 rounded-lg"><Sparkles className="w-5 h-5 text-green-600" /></div>
-                    <div><div className="text-xs font-bold">Branding Mini</div><div className="text-[10px] text-muted-foreground">Siap dipakai</div></div>
-                  </motion.div>
-
-                  <div className="space-y-3 pt-4">
-                    <div className="h-28 rounded-xl bg-gradient-to-br from-primary/10 to-primary/20" />
-                    <div className="h-4 w-3/4 rounded-full bg-muted" />
-                    <div className="h-4 w-1/2 rounded-full bg-muted" />
-                    <div className="grid grid-cols-2 gap-3 mt-2">
-                      <div className="h-16 rounded-xl bg-primary/8" />
-                      <div className="h-16 rounded-xl bg-primary/8" />
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-4 sm:grid-cols-3">
+                {essentials.map((item) => (
+                  <motion.div key={item.title} variants={fadeUp} className="rounded-3xl border border-border bg-background p-6 shadow-sm">
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                      <item.icon className="h-5 w-5" />
                     </div>
-                  </div>
-                </div>
-
-                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[88%] bg-white rounded-2xl shadow-xl border border-border p-3 flex justify-between items-center z-10">
-                  <div className="text-center flex-1">
-                    <div className="text-lg font-bold text-primary">1</div>
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Link Promo</div>
-                  </div>
-                  <div className="w-px h-8 bg-border" />
-                  <div className="text-center flex-1">
-                    <div className="text-lg font-bold">3-5</div>
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Hari Kerja</div>
-                  </div>
-                  <div className="w-px h-8 bg-border" />
-                  <div className="text-center flex-1">
-                    <div className="text-lg font-bold">299K</div>
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Promo Awal</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PARTNER ROW ── */}
-      <section className="py-8 border-y border-border/50 bg-white/60 backdrop-blur-sm overflow-hidden">
-        <div className="container mx-auto px-4 mb-4">
-          <p className="text-center text-xs font-semibold text-muted-foreground uppercase tracking-widest">Cocok untuk berbagai jenis usaha & komunitas</p>
-        </div>
-        <div className="flex gap-4 overflow-hidden whitespace-nowrap" style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}>
-          <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ repeat: Infinity, ease: "linear", duration: 28 }} className="flex gap-4 min-w-full items-center">
-            {["UMKM", "Toko Online", "Event Komunitas", "Coffee Shop", "Barbershop", "Jasa Lokal", "Laundry", "Komunitas Digital", "Project Online", "Grup WhatsApp/Telegram",
-              "UMKM", "Toko Online", "Event Komunitas", "Coffee Shop", "Barbershop", "Jasa Lokal", "Laundry", "Komunitas Digital", "Project Online", "Grup WhatsApp/Telegram"].map((item, i) => (
-              <div key={i} className="px-5 py-2 rounded-full border border-border bg-white text-muted-foreground text-sm font-medium whitespace-nowrap shadow-sm">
-                {item}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── ABOUT ── */}
-      <section id="tentang" className="py-20 lg:py-28 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger} className="flex flex-col gap-6">
-              <motion.div variants={fadeUp} className="text-primary font-semibold text-sm tracking-wider uppercase">Tentang Kami</motion.div>
-              <motion.h2 variants={fadeUp} className="text-3xl lg:text-4xl font-bold leading-tight">
-                Usaha Kecil Juga Berhak Tampil Rapi dan Profesional
-              </motion.h2>
-              <motion.div variants={fadeUp} className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Khaa Digital Creative hadir khusus buat kamu yang baru mulai usaha atau project online tapi belum tahu harus mulai dari mana. Bukan agensi besar, bukan harga mahal — tapi hasilnya tetap rapi dan siap dipakai.
-                </p>
-                <p>
-                  Kamu cukup ceritakan kebutuhanmu. Sisanya? Kita yang kerjakan — dari nulis caption, bikin branding, sampai buat landing page sederhana.
-                </p>
+                    <h3 className="mb-2 font-bold">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                  </motion.div>
+                ))}
               </motion.div>
-              <motion.div variants={fadeUp} className="flex gap-4 pt-2">
-                <div className="flex-1 bg-muted/50 rounded-2xl p-4 border border-border flex items-start gap-3">
-                  <div className="bg-white p-2 rounded-lg shadow-sm shrink-0"><CheckCircle2 className="w-5 h-5 text-primary" /></div>
-                  <div>
-                    <h4 className="font-semibold text-sm">Harga Bersahabat</h4>
-                    <p className="text-xs text-muted-foreground mt-1">Paket jelas mulai Rp299 ribu</p>
-                  </div>
-                </div>
-                <div className="flex-1 bg-muted/50 rounded-2xl p-4 border border-border flex items-start gap-3">
-                  <div className="bg-white p-2 rounded-lg shadow-sm shrink-0"><Sparkles className="w-5 h-5 text-primary" /></div>
-                  <div>
-                    <h4 className="font-semibold text-sm">Langsung Bisa Dipakai</h4>
-                    <p className="text-xs text-muted-foreground mt-1">Hasil rapi, siap post atau publish</p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative">
-              <div className="bg-primary/5 rounded-3xl p-8 border border-primary/10">
-                <div className="absolute top-0 right-0 -mt-4 -mr-4 bg-[#F4C96B] text-[#15112B] text-xs font-bold px-3 py-1 rounded-full shadow-lg rotate-12">
-                  Hasil Rapi!
-                </div>
-                <div className="bg-white rounded-xl shadow-lg border border-border overflow-hidden">
-                  <div className="bg-muted p-3 border-b border-border flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400" />
-                    <div className="w-3 h-3 rounded-full bg-amber-400" />
-                    <div className="w-3 h-3 rounded-full bg-green-400" />
-                    <div className="ml-2 text-xs text-muted-foreground font-mono">contoh-promosi.txt</div>
-                  </div>
-                  <div className="p-6 space-y-3">
-                    <span className="inline-block px-2 py-1 bg-green-100 text-green-800 text-[10px] font-bold rounded-md">Siap Publish</span>
-                    <h3 className="font-bold text-xl">Promo Akhir Bulan!</h3>
-                    <p className="text-sm text-foreground/80 leading-relaxed border-l-2 border-primary pl-3">
-                      Lagi cari tempat ngopi yang asik buat nugas? Mampir hari ini dan dapetin diskon 20% untuk semua menu kopi susu!
-                    </p>
-                    <ul className="text-sm space-y-2 pt-2">
-                      <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" /> WiFi kencang &amp; colokan tersedia</li>
-                      <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" /> Harga mulai Rp15K</li>
-                    </ul>
-                    <div className="pt-2">
-                      <span className="inline-block px-2 py-1 bg-purple-100 text-purple-800 text-[10px] font-bold rounded-md mb-2">CTA Jelas</span>
-                      <div className="w-full text-center bg-green-600 text-white text-sm font-bold rounded-lg py-2 cursor-default">Pesan Sekarang via WhatsApp</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── PROBLEMS ── */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-primary font-semibold text-sm tracking-wider uppercase mb-3">Masalah Umum</p>
-            <h2 className="text-3xl font-bold mb-3">Pernah Ngerasain Ini?</h2>
-            <p className="text-muted-foreground text-sm">Banyak usaha kecil tertahan di masalah yang sama. Kita hadir untuk bantu selesaikan itu.</p>
-          </div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {[
-              { icon: MessageCircle, title: "Bingung Nulis Promosi", desc: "Punya produk bagus tapi nggak tahu cara nulis yang bikin orang mau beli." },
-              { icon: Image, title: "Tampilan Belum Meyakinkan", desc: "Feed, banner, atau poster masih kelihatan seadanya dan kurang profesional." },
-              { icon: Star, title: "Belum Punya Identitas Brand", desc: "Usaha sudah jalan, tapi nama, tagline, dan tampilannya belum konsisten." },
-              { icon: Globe, title: "Belum Ada Halaman Promosi", desc: "Butuh satu halaman untuk jelasin produk atau jasa, tapi nggak bisa coding." },
-            ].map((item, i) => (
-              <motion.div key={i} variants={fadeUp} whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="bg-white p-6 rounded-2xl border border-border shadow-sm hover:shadow-md transition-all">
-                <div className="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-base mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <div className="text-center mt-10">
-            <p className="text-sm font-semibold text-primary">Semua masalah di atas bisa kita bantu selesaikan.</p>
-            <a href="#layanan" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors mt-1">
-              Lihat layanan kami <ArrowRight className="w-3 h-3" />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SERVICES ── */}
-      <section id="layanan" className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="text-primary font-semibold text-sm tracking-wider uppercase mb-3">Layanan</div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Apa Saja yang Bisa Kita Bantu?</h2>
-            <p className="text-muted-foreground text-sm">Pilih sesuai kebutuhan — bisa mulai dari satu layanan kecil dulu, nggak harus langsung paket besar.</p>
-          </div>
-
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {[
-              { icon: Globe, title: "Landing Page UMKM", desc: "Satu halaman promosi berisi layanan/produk, harga, lokasi, FAQ, dan tombol WhatsApp." },
-              { icon: PenTool, title: "Copywriting Halaman", desc: "Teks dibuat jelas dan natural: headline, deskripsi layanan, CTA, dan FAQ sederhana." },
-              { icon: MonitorSmartphone, title: "Deploy & Mobile Ready", desc: "Website dibuat responsive, enak dibuka dari HP, dan siap dipakai sebagai link bio." },
-            ].map((item, i) => (
-              <motion.div key={i} variants={fadeUp} whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="bg-white p-6 rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all group cursor-default">
-                <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <item.icon className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-base mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── PURPLE BAND ── */}
-      <section className="py-24 bg-[#15112B] text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-[#15112B]" />
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary blur-[100px] rounded-full opacity-50" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#F4C96B] blur-[100px] rounded-full opacity-20" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-7">
-              <h2 className="text-3xl lg:text-5xl font-bold leading-tight">
-                Promosi Lebih Rapi, Pesan Lebih Jelas, Usaha Lebih Dipercaya
-              </h2>
-              <p className="text-lg text-white/70 leading-relaxed">
-                Calon pelanggan sering ragu beli karena promosi yang berantakan. Dengan sentuhan Khaa Digital Creative, materi promosimu jadi lebih meyakinkan — tanpa terlihat lebay atau kaku.
+        <section id="mulai" className="py-20 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Langkah awal</p>
+              <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">Yang perlu ada sekarang</h2>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Website ini dibuat lebih ramping: cukup jelasin brand, tawaran awal, cara kerja, dan tombol kontak. Sisanya nanti ditambah setelah ada hasil/client nyata.
               </p>
-              <div className="grid grid-cols-2 gap-4">
-                {["Bahasa mudah dipahami", "CTA yang jelas dan kuat", "Tampilan lebih rapi", "Cocok untuk semua platform"].map((text, i) => (
-                  <div key={i} className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#F4C96B] shrink-0" />
-                    <span className="text-sm font-medium">{text}</span>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {startSteps.map((item) => (
+                <div key={item.step} className="rounded-3xl border border-border bg-white p-6 shadow-sm">
+                  <div className="mb-5 text-3xl font-black text-primary">{item.step}</div>
+                  <h3 className="mb-2 font-bold">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#15112B] py-20 text-white lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+              <div>
+                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-[#F4C96B]">Yang dihapus</p>
+                <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">Biar brand nggak kelihatan maksa besar.</h2>
+                <p className="text-white/70 leading-relaxed">
+                  Untuk fase awal, trust lebih penting daripada kelihatan ramai. Jadi isi website dipangkas ke hal yang benar-benar kepakai buat mulai jualan.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                {removeItems.map((item) => (
+                  <div key={item} className="flex gap-3 rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-sm">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#F4C96B]" />
+                    <p className="text-sm leading-relaxed text-white/80">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
-
-            <div className="relative">
-              <div className="bg-white rounded-3xl p-6 shadow-2xl text-foreground relative z-10 -rotate-2">
-                <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Sebelum</div>
-                <div className="p-4 bg-muted rounded-xl border border-border opacity-70">
-                  <p className="text-sm text-muted-foreground">Jual makanan, ready order, murah meriah hubungi nomor di bio ya.</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-3xl p-6 shadow-2xl text-foreground relative z-20 mt-[-1.5rem] ml-8 rotate-2 border-2 border-primary">
-                <div className="absolute -top-3 -right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Sesudah</div>
-                <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
-                  <h4 className="font-bold text-primary mb-2">Lagi lapar tapi mager keluar?</h4>
-                  <p className="text-sm mb-3">Menu favorit siap diantar. Rasa resto, harga warung — pesan sekarang!</p>
-                  <div className="w-full text-center bg-green-600 text-white text-sm font-bold rounded-lg py-2 cursor-default">Order via WhatsApp</div>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── SAMPLE WORK ── */}
-      <section id="contoh" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="text-primary font-semibold text-sm tracking-wider uppercase mb-3">Contoh Pekerjaan</div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Contoh yang Bisa Kita Buat</h2>
-            <span className="text-xs text-muted-foreground bg-white border border-border py-2 px-4 rounded-full inline-flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-primary" /> Semua contoh dibuat sebagai sampel — bukan klien nyata
-            </span>
-          </div>
-
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { tag: "Copywriting + Banner", title: "Promo UMKM Makanan", color: "from-orange-400 to-red-500", desc: "Headline poster, caption jualan, deskripsi menu, dan CTA order yang menarik." },
-              { tag: "Landing Page", title: "Landing Page Jasa Lokal", color: "from-blue-400 to-indigo-500", desc: "Halaman promosi untuk laundry, barbershop, bengkel, atau jasa rumahan." },
-              { tag: "Event Kit", title: "Event Sekolah / Kampus", color: "from-purple-400 to-pink-500", desc: "Announcement, rules, teks pendaftaran, dan caption promosi event." },
-              { tag: "Branding + Bio", title: "Toko Online Kecil", color: "from-emerald-400 to-teal-500", desc: "Bio Instagram, tagline, deskripsi toko, dan template caption." },
-              { tag: "Community Kit", title: "Komunitas Digital", color: "from-indigo-500 to-purple-600", desc: "Welcome message, rules komunitas, dan template announcement grup." },
-              { tag: "Branding Mini", title: "Project Digital Simple", color: "from-cyan-400 to-blue-500", desc: "Tagline, deskripsi project, copy landing page, dan prompt visual." },
-            ].map((item, i) => (
-              <motion.div key={i} variants={fadeUp} whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                className="bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-xl transition-all group">
-                <div className={`h-44 bg-gradient-to-br ${item.color} flex items-end p-4 relative`}>
-                  <div className="absolute inset-0 bg-black/10" />
-                  <div className="w-9 h-9 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center relative z-10">
-                    <Sparkles className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-                <div className="p-5">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded-md mb-3 inline-block">
-                    {item.tag}
-                  </span>
-                  <h3 className="font-bold text-base mb-2">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{item.desc}</p>
-                  <Button variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-white transition-colors">
-                    Lihat Detail
-                  </Button>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── WHY CHOOSE ── */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Kenapa Pilih Khaa Digital Creative?</h2>
-            <p className="text-muted-foreground text-sm">Bukan sekadar murah — tapi juga proses yang mudah dan hasil yang bisa langsung dipakai.</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {[
-              { icon: Zap, title: "Mulai 299K", desc: "Promo awal" },
-              { icon: Clock, title: "3–5 Hari", desc: "Landing page" },
-              { icon: Shield, title: "Bisa Custom", desc: "Fleksibel" },
-              { icon: Smile, title: "Revisi Ringan", desc: "Sampai puas" },
-            ].map((stat, i) => (
-              <div key={i} className="bg-primary/5 rounded-2xl p-6 text-center border border-primary/10">
-                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <stat.icon className="w-5 h-5 text-primary" />
-                </div>
-                <div className="text-xl font-bold text-primary mb-1">{stat.title}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.desc}</div>
-              </div>
-            ))}
-          </div>
-
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              { title: "Harga Ramah di Kantong", desc: "Cocok banget buat UMKM dan project kecil yang baru mulai — nggak perlu sewa agensi mahal." },
-              { title: "Bisa Mulai dari Nol", desc: "Belum punya ide sama sekali juga tidak apa-apa. Cerita dulu, kita bantu susun bareng." },
-              { title: "Bahasa Indonesia yang Natural", desc: "Teks ditulis agar terasa natural dan mudah dipahami target market lokal — bukan bahasa robot." },
-              { title: "Prosesnya Tidak Ribet", desc: "Ceritakan kebutuhanmu, diskusi singkat, draft jadi, revisi jika perlu, lalu selesai. Sesimpel itu." },
-              { title: "Hasil Langsung Siap Pakai", desc: "Output yang dikirim bukan sekadar konsep — tapi materi yang langsung bisa kamu post atau rilis." },
-            ].map((item, i) => (
-              <motion.div key={i} variants={fadeUp} className="flex gap-4 p-6 bg-white border border-border rounded-2xl shadow-sm">
-                <div className="mt-0.5 shrink-0">
-                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                    <CheckCircle2 className="w-4 h-4 text-green-600" />
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-bold text-base mb-1.5">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── PRICING ── */}
-      <section id="harga" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="text-primary font-semibold text-sm tracking-wider uppercase mb-3">Harga</div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Paket Harga Landing Page</h2>
-            <p className="text-muted-foreground text-sm">Tiga paket simpel, jelas, dan mudah dipilih. Fokus utama: landing page yang rapi, mobile-friendly, dan langsung connect ke WhatsApp.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[
-              {
-                name: "Promo Client Pertama", price: "299", suffix: "ribu", for: "Mulai cepat dengan budget ringan",
-                features: ["1 landing page simpel", "Tampilan responsive", "Tombol WhatsApp", "Info produk/layanan", "Lokasi & jam buka", "FAQ singkat", "Revisi ringan 1x"],
-                msg: "Halo Khaa Digital, saya tertarik dengan Paket Promo Client Pertama Rp299 ribu.",
-              },
-              {
-                name: "Basic", price: "499", suffix: "ribu", for: "UMKM yang butuh halaman promosi rapi",
-                features: ["Semua fitur paket promo", "Section harga/paket", "Section testimoni", "Copywriting dasar", "Deploy online", "Revisi 1x"],
-                highlight: true,
-                msg: "Halo Khaa Digital, saya tertarik dengan Paket Basic Rp499 ribu.",
-              },
-              {
-                name: "Standard", price: "799", suffix: "ribu", for: "Tampil lebih profesional dan siap jualan",
-                features: ["Semua fitur Basic", "Copywriting lebih lengkap", "SEO title & description", "CTA WhatsApp lebih rapi", "Desain lebih polished", "Revisi 2x"],
-                msg: "Halo Khaa Digital, saya tertarik dengan Paket Standard Rp799 ribu.",
-              },
-            ].map((pkg, i) => (
-              <motion.div key={i} variants={fadeUp} whileHover={{ y: -6 }}
-                className={`relative rounded-3xl p-7 bg-white flex flex-col border ${pkg.highlight ? "border-primary shadow-xl shadow-primary/10 ring-1 ring-primary/20" : "border-border shadow-sm"}`}>
-                {pkg.highlight && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    Rekomendasi
-                  </div>
-                )}
-                <div className="mb-5 border-b border-border/60 pb-5">
-                  <h3 className="font-bold text-lg mb-1">{pkg.name}</h3>
-                  <p className="text-xs text-muted-foreground mb-3">Cocok untuk: {pkg.for}</p>
-                  <div className="flex items-baseline gap-1 text-primary">
-                    <span className="font-semibold">Rp</span>
-                    <span className="text-4xl font-black">{pkg.price}</span>
-                    <span className="font-semibold text-sm text-primary/80">{pkg.suffix}</span>
-                  </div>
-                </div>
-                <ul className="space-y-2.5 mb-7 flex-1">
-                  {pkg.features.map((f, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className="w-full" variant={pkg.highlight ? "default" : "outline"} asChild>
-                  <a href={waLink(pkg.msg)} target="_blank" rel="noopener noreferrer">
-                    Pilih Paket
-                  </a>
-                </Button>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="text-center text-xs text-muted-foreground mt-8">
-            Belum yakin pilih yang mana? <a href={waLink("Halo Khaa Digital, saya mau konsultasi paket landing page yang cocok.")} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">Chat dulu, konsultasi gratis.</a>
-          </p>
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS ── */}
-      <section id="cara-order" className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-xl mx-auto mb-14">
-            <h2 className="text-3xl font-bold mb-3">Cara Order — Gampang Banget</h2>
-            <p className="text-muted-foreground text-sm">Empat langkah simpel dari cerita kebutuhan sampai hasil siap dipakai.</p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8 relative">
-            <div className="hidden md:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20 -z-10" />
-            {[
-              { num: "01", title: "Ceritakan Kebutuhan", desc: "Salin formulir di bawah, isi sesuai kebutuhanmu, kirim via WhatsApp atau DM Instagram." },
-              { num: "02", title: "Diskusi Singkat", desc: "Kita ngobrol sebentar untuk mastiin hasilnya sesuai ekspektasi kamu." },
-              { num: "03", title: "Pengerjaan Draft", desc: "Ditunggu 3–5 hari kerja untuk landing page. Kamu bisa fokus urusan lain dulu." },
-              { num: "04", title: "Revisi & Selesai", desc: "Cek hasilnya, minta revisi kalau perlu, lalu materi siap langsung dipakai." },
-            ].map((step, i) => (
-              <div key={i} className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-white border-4 border-primary/20 shadow-md flex items-center justify-center font-black text-2xl text-primary mb-5 ring-1 ring-border">
-                  {step.num}
-                </div>
-                <h3 className="font-bold text-base mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── BRIEF TEMPLATE ── */}
-      <section id="brief" className="py-24 bg-[#F8F6FF]">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl border border-primary/10">
-            <div className="text-center mb-7">
-              <h2 className="text-2xl lg:text-3xl font-bold mb-3">Ceritakan Kebutuhanmu Seperti Ini</h2>
-              <p className="text-muted-foreground text-sm">Tidak harus rapi — ceritakan saja seadanya dulu, kita bantu susun bareng.</p>
-            </div>
-
-            <div className="bg-[#15112B] rounded-2xl p-6 text-green-400 font-mono text-sm leading-loose mb-6 shadow-inner overflow-x-auto">
-              <pre><code>{`Nama usaha/project: 
-Jenis usaha: 
-Target audience: 
-Butuh dibantu bagian apa: 
-Gaya yang diinginkan: 
-Referensi jika ada: 
-Deadline: 
-Kontak: `}</code></pre>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button size="lg" className="flex-1 gap-2 h-12" onClick={copyBrief}>
-                <Copy className="w-4 h-4" /> Salin Formulir
-              </Button>
-              <Button size="lg" variant="outline" className="flex-1 gap-2 h-12 border-green-500 text-green-700 hover:bg-green-50" asChild>
-                <a href={waLink(briefText)} target="_blank" rel="noopener noreferrer">
-                  <Phone className="w-4 h-4" /> Langsung ke WhatsApp
-                </a>
-              </Button>
-            </div>
-
-            <p className="text-center text-xs text-muted-foreground mt-4">
-              atau DM Instagram <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">@itsmaulacc</a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── TESTIMONIALS ── */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <div className="text-primary font-semibold text-sm tracking-wider uppercase mb-3">Contoh Feedback</div>
-            <h2 className="text-3xl font-bold mb-3">Kata Mereka Tentang Hasilnya</h2>
-            <p className="text-xs text-muted-foreground italic">Testimoni di bawah adalah contoh — akan diganti dengan ulasan nyata setelah order pertama.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              { quote: "Modal 50 ribu tapi caption Instagramku jadi kelihatan kayak ditulis tim profesional. Rekomen banget buat teman UMKM!", author: "Contoh Klien UMKM", role: "Owner Kedai Kopi" },
-              { quote: "Mau bikin rules Discord tapi bingung mulai dari mana. Setelah dibantu, bahasanya asik dan member baru langsung gampang paham.", author: "Contoh Admin Komunitas", role: "Moderator Komunitas Game" },
-              { quote: "Landing page basic-nya simpel tapi tampilannya bersih dan niat. Langsung taruh di link bio IG dan hasilnya oke banget.", author: "Contoh Project Digital", role: "Freelance Fotografer" },
-            ].map((testi, i) => (
-              <div key={i} className="bg-muted/50 p-7 rounded-3xl border border-border">
-                <div className="flex text-[#F4C96B] mb-4">
-                  {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-current" />)}
-                </div>
-                <p className="text-foreground text-sm leading-relaxed italic mb-6">"{testi.quote}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
-                    {testi.author.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-bold text-sm">{testi.author}</div>
-                    <div className="text-xs text-muted-foreground">{testi.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ ── */}
-      <section id="faq" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-3">Masih Ada Pertanyaan?</h2>
-            <p className="text-muted-foreground text-sm">Beberapa pertanyaan yang sering ditanyakan sebelum order.</p>
-          </div>
-
-          <Accordion type="single" collapsible className="w-full bg-white rounded-2xl border border-border px-6 shadow-sm">
-            {[
-              { q: "Apakah ini agensi besar?", a: "Bukan. Khaa Digital Creative adalah layanan freelance independen. Karena itu harganya jauh lebih terjangkau dan prosesnya lebih personal." },
-              { q: "Kalau saya belum punya konsep, bisa dibantu?", a: "Tentu bisa. Ceritakan saja kebutuhanmu seadanya — dari sana kita bantu susun konsep yang pas bareng." },
-              { q: "Berapa lama proses pengerjaannya?", a: "Paket kecil seperti caption atau bio biasanya 1 hari kerja. Landing page bisa 3–5 hari kerja tergantung antrean." },
-              { q: "Apakah ada revisi?", a: "Ya, setiap paket sudah termasuk 1x revisi ringan. Kalau ada perubahan besar, biasanya ada biaya tambahan kecil." },
-              { q: "Bagaimana cara bayarnya?", a: "Transfer bank atau e-wallet (GoPay, Dana, OVO). Bisa DP 50% dulu atau bayar penuh setelah draft pertama disetujui." },
-              { q: "Bisa request layanan di luar paket?", a: "Sangat bisa. Chat saja dulu — kita hitungkan biayanya sesuai kebutuhan. Fleksibel dan tidak ribet." },
-            ].map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-border">
-                <AccordionTrigger className="text-left font-semibold hover:text-primary transition-colors py-4 text-sm">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-4 text-sm">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
-      {/* ── FINAL CTA ── */}
-      <section className="py-24 bg-gradient-to-b from-[#15112B] to-[#0A0815] text-white">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
-          <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-white/20">
-            <Sparkles className="w-7 h-7 text-[#F4C96B]" />
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-5 leading-tight">Yuk, Mulai dari Satu Langkah Kecil</h2>
-          <p className="text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed">
-            Nggak perlu bingung teknis. Ceritakan usaha kamu, nanti kita bantu susun halaman promosi yang rapi dan siap dibagikan ke calon pelanggan.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full h-14 px-8 text-base border-0" asChild>
-              <a href={waLink("Halo Khaa Digital, saya ingin konsultasi dan pesan layanan.")} target="_blank" rel="noopener noreferrer">
-                <Phone className="w-4 h-4 mr-2" /> Pesan via WhatsApp
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/20 rounded-full h-14 px-8 text-base backdrop-blur-sm" asChild>
-              <a href="#harga">Lihat Paket Harga</a>
-            </Button>
-          </div>
-
-          <p className="text-xs text-white/40 mb-6">Landing page mulai Rp299 ribu • Mobile-friendly • Konsultasi gratis</p>
-
-          <p className="text-xs font-medium text-white/50 uppercase tracking-widest mb-4">Atau hubungi via</p>
-          <div className="flex justify-center gap-4">
-            <a href={WA_BASE} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-green-600/80 hover:-translate-y-1 transition-all rounded-full border border-white/10 text-sm font-medium">
-              <Phone className="w-4 h-4" /> WhatsApp
-            </a>
-            <a href={IG_LINK} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-pink-600/80 hover:-translate-y-1 transition-all rounded-full border border-white/10 text-sm font-medium">
-              <Instagram className="w-4 h-4" /> @itsmaulacc
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FOOTER ── */}
-      <footer className="bg-background py-14 border-t border-border">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="bg-primary text-primary-foreground rounded-full p-1.5">
-                  <Sparkles className="w-3 h-3" />
-                </div>
-                <span className="font-bold tracking-tight">Khaa Digital Creative</span>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Jasa digital kreatif untuk UMKM, komunitas, dan usaha lokal. Tampil lebih profesional tanpa bikin kantong jebol.
+        <section id="paket" className="bg-white py-20 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Paket awal</p>
+              <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">Mulai dari Brand Starter</h2>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Satu paket dulu biar gampang dijual dan gampang dikerjakan. Nanti setelah ada bukti hasil dari client pertama, baru tambah paket lain.
               </p>
             </div>
 
-            <div>
-              <h4 className="font-bold mb-4 text-sm">Layanan</h4>
-              <ul className="space-y-2.5 text-sm text-muted-foreground">
-                <li><a href="#layanan" className="hover:text-primary transition-colors">Branding Simple</a></li>
-                <li><a href="#layanan" className="hover:text-primary transition-colors">Copywriting Promosi</a></li>
-                <li><a href="#layanan" className="hover:text-primary transition-colors">Landing Page Basic</a></li>
-                <li><a href="#layanan" className="hover:text-primary transition-colors">Community Kit</a></li>
-              </ul>
-            </div>
+            <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-stretch">
+              <div className="rounded-[2rem] border border-primary/20 bg-primary/5 p-7 shadow-xl shadow-primary/5">
+                <div className="mb-6 flex flex-col gap-4 border-b border-primary/15 pb-6 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <div className="mb-3 inline-flex rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">Rekomendasi awal</div>
+                    <h3 className="text-2xl font-black">Brand Starter Page</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">Untuk UMKM/jasa lokal/project kecil yang belum punya arah brand jelas.</p>
+                  </div>
+                  <div className="shrink-0 rounded-2xl bg-white p-5 text-center shadow-sm">
+                    <div className="text-sm font-semibold text-primary">Mulai dari</div>
+                    <div className="text-4xl font-black text-primary">Rp299K</div>
+                    <div className="text-xs text-muted-foreground">promo client awal</div>
+                  </div>
+                </div>
 
-            <div>
-              <h4 className="font-bold mb-4 text-sm">Menu</h4>
-              <ul className="space-y-2.5 text-sm text-muted-foreground">
-                <li><a href="#tentang" className="hover:text-primary transition-colors">Tentang Kami</a></li>
-                <li><a href="#harga" className="hover:text-primary transition-colors">Harga</a></li>
-                <li><a href="#contoh" className="hover:text-primary transition-colors">Contoh</a></li>
-                <li><a href="#faq" className="hover:text-primary transition-colors">FAQ</a></li>
-              </ul>
-            </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    "Mini brand direction: tagline, tone, warna dasar",
+                    "Copywriting singkat untuk jelasin produk/jasa",
+                    "Landing page 1 halaman yang mobile-friendly",
+                    "Tombol WhatsApp dengan pesan order otomatis",
+                    "Section layanan, harga awal, alur, dan kontak",
+                    "Revisi ringan 1x setelah draft pertama",
+                  ].map((feature) => (
+                    <div key={feature} className="flex gap-2 rounded-2xl bg-white p-4 text-sm shadow-sm">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
 
-            <div id="kontak">
-              <h4 className="font-bold mb-4 text-sm">Kontak</h4>
-              <ul className="space-y-2.5 text-sm text-muted-foreground">
-                <li>
-                  <a href={WA_BASE} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5" /> WhatsApp
+                <Button size="lg" className="mt-7 h-12 w-full rounded-full text-base" asChild>
+                  <a href={waLink("Halo Khaa Digital, saya tertarik dengan Brand Starter Page Rp299K.")} target="_blank" rel="noopener noreferrer">
+                    Ambil Paket Starter <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
-                </li>
-                <li>
-                  <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
-                    <Instagram className="w-3.5 h-3.5" /> @itsmaulacc
-                  </a>
-                </li>
-              </ul>
+                </Button>
+              </div>
+
+              <div className="rounded-[2rem] border border-border bg-background p-7">
+                <h3 className="mb-5 text-xl font-black">Belum perlu dulu</h3>
+                <div className="space-y-4">
+                  {[
+                    "Paket terlalu banyak",
+                    "Portfolio palsu",
+                    "Klaim agensi besar",
+                    "Fitur ribet kayak login/dashboard",
+                    "Terlalu banyak animasi yang ganggu baca",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3 rounded-2xl border border-border bg-white p-4 text-sm font-medium text-muted-foreground">
+                      <Shield className="h-4 w-4 text-primary" /> {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-muted-foreground">© 2026 Khaa Digital Creative. All rights reserved.</p>
-            <p className="text-xs text-muted-foreground flex items-center gap-1">
-              Dibuat dengan <Sparkles className="w-3 h-3 text-primary" /> untuk Usaha Lokal Indonesia
-            </p>
+        <section id="alur" className="py-20 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto mb-12 max-w-2xl text-center">
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Alur kerja</p>
+              <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-4xl">Simpel, biar client nggak bingung</h2>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {[
+                { icon: MessageCircle, title: "Brief singkat", desc: "Client cerita usaha, target, layanan, dan gaya yang disukai." },
+                { icon: Clock, title: "Draft 3–5 hari", desc: "Kita susun copy, layout, dan halaman promosi awal." },
+                { icon: MonitorSmartphone, title: "Revisi & publish", desc: "Cek dari HP, revisi ringan, lalu halaman siap dibagikan." },
+              ].map((item) => (
+                <div key={item.title} className="rounded-3xl border border-border bg-white p-6 shadow-sm">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <item.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mb-2 font-bold">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="kontak" className="bg-[#F8F6FF] py-20 lg:py-24">
+          <div className="container mx-auto max-w-3xl px-4">
+            <div className="rounded-[2rem] border border-primary/10 bg-white p-7 shadow-xl shadow-primary/5 sm:p-10">
+              <div className="mb-7 text-center">
+                <h2 className="mb-3 text-3xl font-black tracking-tight">Mau mulai dari awal?</h2>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Salin brief ini, isi seadanya, lalu kirim via WhatsApp. Nggak harus sempurna — yang penting mulai dulu.
+                </p>
+              </div>
+
+              <div className="mb-6 overflow-x-auto rounded-2xl bg-[#15112B] p-5 text-sm leading-loose text-green-400 shadow-inner">
+                <pre><code>{briefText}</code></pre>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <Button size="lg" variant="outline" className="h-12 rounded-full" onClick={copyBrief}>
+                  <Copy className="mr-2 h-4 w-4" /> Salin Brief
+                </Button>
+                <Button size="lg" className="h-12 rounded-full" asChild>
+                  <a href={waLink(briefText)} target="_blank" rel="noopener noreferrer">
+                    <Phone className="mr-2 h-4 w-4" /> Kirim ke WhatsApp
+                  </a>
+                </Button>
+              </div>
+
+              <p className="mt-5 text-center text-xs text-muted-foreground">
+                Bisa juga DM Instagram <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline">@itsmaulacc</a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-border bg-white py-10">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:text-left">
+          <div>
+            <div className="mb-1 font-bold">Khaa Digital</div>
+            <p className="text-sm text-muted-foreground">Branding simple, copywriting, dan landing page untuk langkah awal.</p>
+          </div>
+          <div className="flex gap-3">
+            <a href={WA_BASE} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary">
+              <Phone className="h-4 w-4" /> WhatsApp
+            </a>
+            <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary">
+              <Instagram className="h-4 w-4" /> Instagram
+            </a>
           </div>
         </div>
       </footer>
 
-      {/* ── FLOATING WA BUTTON ── */}
       <a
-        href={waLink("Halo Khaa Digital, saya ingin konsultasi.")}
+        href={waLink("Halo Khaa Digital, saya mau mulai branding dari awal.")}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-xl shadow-green-500/30 hover:-translate-y-1 transition-all font-semibold text-sm"
+        className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 text-sm font-bold text-white shadow-xl shadow-green-500/30 transition-all hover:-translate-y-1 hover:bg-green-600"
         aria-label="Chat WhatsApp"
       >
-        <Phone className="w-4 h-4" />
-        <span>WhatsApp</span>
+        <Phone className="h-4 w-4" /> WhatsApp
       </a>
     </div>
   );
